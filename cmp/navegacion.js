@@ -22,6 +22,7 @@ async function cargaRoles(email) {
   }
 
 
+
 class Navegacion extends HTMLElement {
     connectedCallback() {
       this.innerHTML = /* html */
@@ -37,9 +38,26 @@ class Navegacion extends HTMLElement {
         usuario => this.
           cambiaUsuario(usuario),
         muestraError);
-    //}
+    }
   
-
+    async cambiaUsuario(usu) {
+        if (usu && usu.email) {
+          let html = "";
+          const roles =
+            await cargaRoles(
+              usu.email);
+          /* Enlaces para solo
+           * para clientes. */
+          if (roles.has("Cliente")) {
+            html += /* html */
+              `<li>
+                <a href=
+                  "chat.html">Chat</a>
+              </li>`;
+          }
+          /* Enlaces para solo
+           * administradores.
+           */
         if (refRol.has("Ugratuito")) {
           html += /* html */
             `<li>
@@ -62,5 +80,7 @@ class Navegacion extends HTMLElement {
         this.ul.innerHTML += html;
     }
 }
+}
+
   customElements.define(
     "navegacion", Navegacion);
