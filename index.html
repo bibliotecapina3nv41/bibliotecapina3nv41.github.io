@@ -14,20 +14,26 @@
     <script type="module" src="cmp/CustomFooter.js"></script>
   </head>
   <body>
-    <h1>Hola Mundo</h1>
-    <navegacion></navegacion>
-    <!-- Este es un párrafo-->
-    <p>Hola mundo esto es una prueba.</p>
-    <!-- Otro párrafo. -->
-    <p>
-      Este es mi primer ejemplo jajaja un gallo con tenis.
-    </p>
-    <fieldset>
-      <legend>Email</legend>
-      <output id="email"><progress max="100">Cargando…</progress></output>
-    </fieldset>
-    <button type="button" onclick="terminaSesión()">Terminar Sesión</button>
-    <c-footer></c-footer>
+    <form name="forma">
+      <h1>Hola Mundo</h1>
+      <navegacion></navegacion>
+      <!-- Este es un párrafo-->
+      <p>Hola mundo esto es una prueba.</p>
+      <!-- Otro párrafo. -->
+      <p>
+        Este es mi primer ejemplo jajaja un gallo con tenis.
+      </p>
+      <fieldset>
+        <legend>Email</legend>
+        <output id="email"><progress max="100">Cargando…</progress></output>
+      </fieldset>
+      <div class="herramientas">
+        <button type="button" name="terminarSesion">Terminar Sesión</button>
+      </div>
+      <c-footer></c-footer>
+    </form>
+    <script type="module" src="js/CtrlSesion.js"></script>
+    <!--
     <script>
       //@ts-check
       /** Conexión al sistema de autenticación de Firebase. */
@@ -76,6 +82,6 @@
         console.log(e);
         alert(e.message);
       }
-    </script>
+    </script> -->
   </body>
 </html>

@@ -1,86 +1,69 @@
-const firestore = firebase.firestore();
-const refRol = firestore.collection("Rol");
-const refUsr = firestore.collection("Usuario");
-const auth = firebase.auth();
-
-async function cargaRoles(email) {
-    let doc =
-      await refUsr.
-        doc(email).
-        get();
-    if (doc.exists) {
-      /**
-       * @type {
-          import("./tipos.js").
-          Usuario} */
-      const data = doc.data();
-      return new Set(
-        data.rolIds || []);
-    } else {
-      return new Set();
-    }
-  }
-
-
-
-class Navegacion extends HTMLElement {
+import {
+    cargaRoles
+  } from "../js/datosesion.js";
+  import {
+    getAuth
+  } from "../lib/instancias.js";
+  import {
+    muestraError
+  } from "../lib/util.js";
+  
+  class Navegacion extends HTMLElement {
     connectedCallback() {
       this.innerHTML = /* html */
         `<ul>
           <li>
             <a href="index.html">
-              Inicio</a>
+              Sesión</a>
           </li>
         </ul>`;
       this.ul =
         this.querySelector("ul");
-        auth.onAuthStateChanged(
+      getAuth().onAuthStateChanged(
         usuario => this.
           cambiaUsuario(usuario),
         muestraError);
     }
   
+    /**
+     * @param {import(
+        "../lib/tiposFire.js").User}
+        usu */
     async cambiaUsuario(usu) {
-        if (usu && usu.email) {
-          let html = "";
-          const roles =
-            await cargaRoles(
-              usu.email);
-          /* Enlaces para solo
-           * para clientes. */
-          if (roles.has("Cliente")) {
-            html += /* html */
-              `<li>
-                <a href=
-                  "chat.html">Chat</a>
-              </li>`;
-          }
-          /* Enlaces para solo
-           * administradores.
-           */
-        if (refRol.has("Ugratuito")) {
+      if (usu && usu.email) {
+        let html = "";
+        const roles =
+          await cargaRoles(
+            usu.email);
+        /* Enlaces para solo
+         * para clientes. */
+        if (roles.has("Cliente")) {
           html += /* html */
             `<li>
-              <a href="gratuitos.html">Libros gratis</a>
+              <a href=
+                "chat.html">Chat</a>
             </li>`;
         }
         /* Enlaces para solo
          * administradores.
          */
-        if (refRol.has(
+        if (roles.has(
           "Administrador")) {
           html += /* html */
             `<li>
-              <a href="miembros.html">Libros premium</a>
+              <a href=
+  "pasatiempos.html">Pasatiempos</a>
             </li>
             <li>
-              <a href="usuarios.html">Usuarios</a>
+              <a href=
+        "usuarios.html">Usuarios</a>
             </li>`;
         }
         this.ul.innerHTML += html;
+      }
     }
-}
-}
-
+  }
+  
   customElements.define(
     "navegacion", Navegacion);
+  
