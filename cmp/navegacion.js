@@ -3,6 +3,24 @@ const refRol = firestore.collection("Rol");
 const refUsr = firestore.collection("Usuario");
 const auth = firebase.auth();
 
+async function cargaRoles(email) {
+    let doc =
+      await refUsr.
+        doc(email).
+        get();
+    if (doc.exists) {
+      /**
+       * @type {
+          import("./tipos.js").
+          Usuario} */
+      const data = doc.data();
+      return new Set(
+        data.rolIds || []);
+    } else {
+      return new Set();
+    }
+  }
+
 
 class Navegacion extends HTMLElement {
     connectedCallback() {
