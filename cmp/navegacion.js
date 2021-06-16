@@ -1,4 +1,8 @@
-class MiNav extends HTMLElement {
+const firestore = firebase.firestore();
+const refCol = firestore.collection("Rol");
+const refCol = firestore.collection("Usuario");
+
+class Navegacion extends HTMLElement {
     connectedCallback() {
       this.innerHTML = /* html */
         `<ul>
@@ -52,4 +56,4 @@ class MiNav extends HTMLElement {
   }
   
   customElements.define(
-    "navegacion", navegacion);
+    "navegacion", Navegacion);
