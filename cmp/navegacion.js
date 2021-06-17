@@ -55,6 +55,9 @@ const docRef = firestore.collection("Usuario");
 
 //console.log(docRef.doc("Usuarios"));
 
+/** @param {string} email
+ * @returns {Promise<Set<string>>}
+ */
   async function cargaRoles(email){
     const roles = await docRef.doc(email).get();
                 if (roles.exists) {
