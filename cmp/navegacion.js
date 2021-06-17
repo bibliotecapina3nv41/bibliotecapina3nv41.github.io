@@ -18,7 +18,7 @@ const docRef = firestore.collection("Usuario");
         </ul>`;
         this.ul = this.querySelector("ul");
         //const auth = firebase.auth();
-        firebase.auth().onAuthStateChanged(usuario => cambiaUsuario(usuario), muestraError);
+        firebase.auth().onAuthStateChanged(usuario => this.cambiaUsuario(usuario), muestraError);
         }
 
       async cambiaUsuario(usu){
@@ -47,13 +47,12 @@ const docRef = firestore.collection("Usuario");
         }
 
         async function cargaRoles(email){
-          const roles = await docRef.doc(email).get();
+          let roles = await docRef.doc(email).get();
                       if (roles.exists) {
                         const datos = roles.data();
-                        return new Set(
-                          datos.rolIds || []);
+                        return datos.rolIds
                       } else {
-                        return new Set();
+                        return 0;
                       }
           }
       }
