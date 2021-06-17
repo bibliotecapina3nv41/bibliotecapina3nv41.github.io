@@ -1,57 +1,47 @@
-import {
-    getAuth
-  } from "../lib/instancias.js";
-  import {
-    muestraError
-  } from "../lib/util.js";
-  import {
-    iniciaSesión,
-    terminaSesión
-  } from "./datosesion.js";
-  
-  /** @type {HTMLFormElement} */
-  const forma = document["forma"];
-  /** @type {HTMLImageElement} */
-  const avatar = document.
-    querySelector("#avatar");
-  
-  /* Escucha cambios de usuario.
-   * El primer parámetro es una
-   * función que se invoca cada que
-   * hay un cambio de usuario y
-   * recibe los datos del usuario.
-   * El segundo parámetro es una
-   * función que se invoca cuando se
-   * presenta un error en un cambio
-   * de usuario y recibe un Error.
-   */
-  getAuth().onAuthStateChanged(
-    muestraSesión, muestraError);
-  
-  /** Muestra los datos del usuario
-   * o manda a iniciar sesión en
-   * caso de que no haya empezado.
-   * @param {import(
-      "../lib/tiposFire").
-      User} usuario modelo con las
-   *    características del usuario
-   *    o null si no ha iniciado
-   *    sesión. */
-  async function
-    muestraSesión(usuario) {
-    if (usuario && usuario.email) {
-      // Usuario aceptado.
-      forma.email.value =
-        usuario.email || "";
-      forma.nombre.value =
-        usuario.displayName || "";
-      avatar.src =
-        usuario.photoURL || "";
-      forma.terminarSesión.
-        addEventListener(
-          "click", terminaSesión);
-    } else {
-      // No ha iniciado sesión.
-      iniciaSesión();
-    }
-  }
+//@ts-check
+      /** Conexión al sistema de autenticación de Firebase. */
+      // @ts-ignore
+      const auth = firebase.auth();
+      /** Tipo de autenticación de usuarios. En este caso es con Google. */
+      // @ts-ignore
+      const provider = new firebase.auth.GoogleAuthProvider();
+      /* Configura el proveedor de Google para que permita seleccionar de una
+       * lista. */
+      provider.setCustomParameters({ prompt: "select_account" });
+      /* Recibe una función que se invoca cada que hay un cambio en la
+       * autenticación y recibe el modelo con las características del usuario.*/
+      auth.onAuthStateChanged(
+        /** Recibe las características del usuario o null si no ha iniciado
+         * sesión. */
+        usuarioAuth => {
+          if (usuarioAuth && usuarioAuth.email) {
+            // Usuario aceptado.
+            // @ts-ignore Muestra el email registrado en Google.
+            email.value = usuarioAuth.email;
+            // @ts-ignore Muestra el nombre registrado en Google.
+            nombre.value = usuarioAuth.displayName;
+            // @ts-ignore Muestra el avatar registrado en Google.
+            avatar.src = usuarioAuth.photoURL;
+          } else {
+            // No ha iniciado sesión. Pide datos para iniciar sesión.
+            auth.signInWithRedirect(provider); 
+          }
+        },
+        // Función que se invoca si hay un error al verificar el usuario. //
+        procesaError
+      );
+      /** Termina la sesión. */
+      async function terminaSesion() {
+        try {
+          await auth.signOut();
+        } catch (e) {
+          procesaError(e);
+        }
+      }
+      /** Procesa un error. Muestra el objeto en la consola y un cuadro de
+       * alerta con el mensaje.
+       * @param {Error} e descripción del error. */
+      function procesaError(e) {
+        console.log(e);
+        alert(e.message);
+      }
