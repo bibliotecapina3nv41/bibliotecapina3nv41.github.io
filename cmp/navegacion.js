@@ -17,5 +17,5 @@ const auth = firebase.auth();*/
   
   
   customElements.define(
-    "navegacion", Navegacion);
+    "c-navegacion", Navegacion);
   
