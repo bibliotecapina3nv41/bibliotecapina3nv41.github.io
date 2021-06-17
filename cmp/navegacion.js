@@ -23,7 +23,7 @@ const docRef = firestore.collection("Usuario");
 
       async cambiaUsuario(usu){
         if (usu && usu.email) {
-          console.log(usu);
+          console.log(usu.email);
           let html = "";
           const rol = await cargaRoles(usu.email);
           /* Enlaces para solo
@@ -44,17 +44,20 @@ const docRef = firestore.collection("Usuario");
               <li>`;
           }
           this.ul.innerHTML += html;
+        
+
+          async function cargaRoles(email){
+            let roles = await docRef.doc(email).get();
+                        if (roles.exists) {
+                          const datos = roles.data();
+                          return datos.rolIds
+                        } else {
+                          return 0;
+                        }
+            }
         }
 
-        async function cargaRoles(email){
-          let roles = await docRef.doc(email).get();
-                      if (roles.exists) {
-                        const datos = roles.data();
-                        return datos.rolIds
-                      } else {
-                        return 0;
-                      }
-          }
+        
       }
 
 //console.log(docRef.doc("Usuarios"));
