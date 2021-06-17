@@ -40,9 +40,9 @@ const docRef = firestore.collection("Usuario");
            */
           if (rol.has("Administrador")) {
             html += /* html */
-              `<p>
+              `<li>
                 <a href="miembros.html">Miembros</a>
-              </p>`;
+              <li>`;
           }
           this.ul.innerHTML += html;
         }
