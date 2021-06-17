@@ -12,15 +12,16 @@ const docRef = firestore.collection("Usuario");
               Inicio</a>
           </li>
         </ul>`;
-       // this.ul = this.querySelector("ul");
+        this.ul = this.querySelector("ul");
         //const auth = firebase.auth();
-        firebase.auth().onAuthStateChanged(usuario => cambiaUsuario(usuario), muestraError);
+        firebase.auth().onAuthStateChanged(usuario => this.cambiaUsuario(usuario), muestraError);
         }
       }
 
-      async function cambiaUsuario(usu) {
+      
+      async function cambiaUsuario(usu){
         if (usu && usu.email) {
-          let html = "";
+          //let html = "";
           const rol = await cargaRoles(usu.email);
           /* Enlaces para solo
            * para clientes. */
@@ -39,9 +40,11 @@ const docRef = firestore.collection("Usuario");
                 <a href="miembros.html">Miembros</a>
               </p>`;
           }
-          //this.ul.innerHTML += html;
+          this.ul.innerHTML += html;
         }
       }
+      
+console.log(docRef);
 
   async function cargaRoles(mail){
     const roles = await docRef.doc(mail).get();
