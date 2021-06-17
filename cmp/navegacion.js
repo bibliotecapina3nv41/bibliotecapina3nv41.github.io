@@ -12,7 +12,7 @@ const docRef = firestore.collection("Usuario");
               Inicio</a>
           </li>
         </ul>`;
-        this.ul = this.querySelector("ul");
+       // this.ul = this.querySelector("ul");
         //const auth = firebase.auth();
         firebase.auth().onAuthStateChanged(usuario => cambiaUsuario(usuario), muestraError);
         }
@@ -35,11 +35,11 @@ const docRef = firestore.collection("Usuario");
            */
           if (rol.has("Administrador")) {
             html += /* html */
-              `<li>
+              `<p>
                 <a href="miembros.html">Miembros</a>
-              </li>`;
+              </p>`;
           }
-          this.ul.innerHTML += html;
+          //this.ul.innerHTML += html;
         }
       }
 
