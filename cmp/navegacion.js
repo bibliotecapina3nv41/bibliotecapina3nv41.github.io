@@ -19,12 +19,14 @@ const docRef = firestore.collection("Usuario");
         ul = this.querySelector("ul");
         //const auth = firebase.auth();
         firebase.auth().onAuthStateChanged(usuario => cambiaUsuario(usuario), muestraError);
+        console.log(usuario);
         }
       }
 
       
       async function cambiaUsuario(usu){
         if (usu && usu.email) {
+          console.log(usu);
           let html = "";
           const rol = await cargaRoles(usu.email);
           /* Enlaces para solo
@@ -54,6 +56,7 @@ const docRef = firestore.collection("Usuario");
     const roles = await docRef.doc(email).get();
                 if (roles.exists) {
                   const datos = roles.data();
+                  console.log(datos.rolIds);
                   return new Set(
                     datos.rolIds || []);
                 } else {
