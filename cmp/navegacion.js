@@ -23,7 +23,10 @@ const docRef = firestore.collection("Usuario");
         }
       }
 
-      
+      /**
+       * @param {import(
+          "../lib/tiposFire.js").User}
+          usu */
       async function cambiaUsuario(usu){
         if (usu && usu.email) {
           console.log(usu);
@@ -55,8 +58,11 @@ const docRef = firestore.collection("Usuario");
   async function cargaRoles(email){
     const roles = await docRef.doc(email).get();
                 if (roles.exists) {
+                  /**
+                   * @type {
+                      import("./tipos.js"). 
+                      Usuario} */
                   const datos = roles.data();
-                  console.log(datos.rolIds);
                   return new Set(
                     datos.rolIds || []);
                 } else {
