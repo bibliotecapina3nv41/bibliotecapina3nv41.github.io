@@ -1,4 +1,10 @@
 @import "navegacion.css";
+
+:root {
+  font-family: sans-serif;
+  --colorMiNav: rgb(230, 22, 22);
+}
+
 body {
     max-width: 640px;
     margin: 0 auto;
