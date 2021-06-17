@@ -1,19 +1,8 @@
 const firestore = firebase.firestore();
 const refUsr = firestore.collection("Usuario");
 const refRol = firestore.collection("Rol");
-//const correo = firebase.auth().onAuthStateChanged(usuario => usuario.email);
+const correo = firebase.auth().onAuthStateChanged(usuario => usuario.email);
 
-async function cargaRoles(correo){
-  const roles = await refUsr.doc(correo).get();
-              if (roles.exists) {
-                const datos = roles.data();
-                return new Set(
-                  datos.rolIds || []);
-                  
-              } else {
-                return new Set();
-              }
-  }
   
   class Navegacion extends HTMLElement {
     connectedCallback() {
@@ -27,9 +16,9 @@ async function cargaRoles(correo){
         this.ul = this.querySelector("ul");
         //const auth = firebase.auth();
         firebase.auth().onAuthStateChanged(function(user) {
-          if (user && user.email) {
+          if (user) {
             let html = "";
-            const roles = await cargaRoles(user.email);
+            const roles = await cargaRoles(correo);
             if (roles.has("Administrador")) {
               html += /* html */
                 `<li>
@@ -41,11 +30,23 @@ async function cargaRoles(correo){
             }
 
            else {
-            console.error(error);
+            console.error();
           }
         });
     }
   }
+
+  async function cargaRoles(mail){
+    const roles = await refUsr.doc(mail).get();
+                if (roles.exists) {
+                  const datos = roles.data();
+                  return new Set(
+                    datos.rolIds || []);
+                    
+                } else {
+                  return new Set();
+                }
+    }
 
   
   customElements.define(
