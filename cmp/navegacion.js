@@ -21,9 +21,8 @@ const docRef = firestore.collection("Usuario");
         firebase.auth().onAuthStateChanged(usuario => cambiaUsuario(usuario), muestraError);
         console.log(usuario);
         }
-      }
 
-      async function cambiaUsuario(usu){
+      async cambiaUsuario(usu){
         if (usu && usu.email) {
           console.log(usu);
           let html = "";
@@ -51,7 +50,7 @@ const docRef = firestore.collection("Usuario");
 
 //console.log(docRef.doc("Usuarios"));
 
-  async function cargaRoles(email){
+  async cargaRoles(email){
     const roles = await docRef.doc(email).get();
                 if (roles.exists) {
                   const datos = roles.data();
@@ -61,6 +60,7 @@ const docRef = firestore.collection("Usuario");
                   return new Set();
                 }
     }
+  }
   
   customElements.define(
     "c-navegacion", Navegacion);
