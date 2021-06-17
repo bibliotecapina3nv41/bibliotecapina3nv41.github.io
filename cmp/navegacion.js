@@ -12,16 +12,18 @@ const auth = firebase.auth();
               Sesión</a>
           </li>
         </ul>`;
-        if(refUsr.has("Administrador")){
+        if(refUsr.rolIds.has("Administrador")){
           html += /* html */
-          `<li>
+          `<ul>
+          <li>
             <a href=
               "gratuitos.html">Gratuitos</a>
           </li>
           <li>
             <a href=
                "Miembros.html">Miembros</a>
-          </li>`;
+          </li>
+          </ul>`;
         }
       }
     }
