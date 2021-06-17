@@ -46,8 +46,8 @@ const docRef = firestore.collection("Usuario");
           this.ul.innerHTML += html;
         
 
-          async function cargaRoles(email){
-            let roles = await docRef.doc(email).get();
+          async function cargaRoles(correo){
+            let roles = await docRef.doc(correo).get();
                         if (roles.exists) {
                           const datos = roles.data();
                           return datos.rolIds
