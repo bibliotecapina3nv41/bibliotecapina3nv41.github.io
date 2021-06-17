@@ -47,18 +47,19 @@ const docRef = firestore.collection("Usuario");
         
 
           async function cargaRoles(correo){
-            let roles = await docRef.doc(correo).get();
+            const roles = await docRef.doc(correo).get();
                         if (roles.exists) {
                           const datos = roles.data();
-                          return datos.rolIds
-                        } else {
-                          return 0;
-                        }
-            }
+                          console.log(datos);
+                          return new Set(datos.rolIds || []);
+                          } else {
+                            return new Set();
+                           }
         }
 
         
       }
+    }
 
 //console.log(docRef.doc("Usuarios"));
 
