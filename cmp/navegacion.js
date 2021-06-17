@@ -56,6 +56,10 @@ const refRol = firestore.collection("Rol");
                 }
     }
 
+    function muestraError(e) {
+      console.error(e);
+      alert(e.message);
+    }
   
   customElements.define(
     "c-navegacion", Navegacion);
