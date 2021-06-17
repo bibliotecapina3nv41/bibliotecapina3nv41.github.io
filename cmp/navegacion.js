@@ -16,7 +16,7 @@ const docRef = firestore.collection("Usuario");
               Inicio</a>
           </li>
         </ul>`;
-        this.ul = this.querySelector("ul");
+        ul = querySelector("ul");
         //const auth = firebase.auth();
         firebase.auth().onAuthStateChanged(usuario => cambiaUsuario(usuario), muestraError);
         }
