@@ -1,6 +1,5 @@
 const firestore = firebase.firestore();
-const refUsr = firestore.collection("Usuario");
-const refRol = firestore.collection("Rol");
+const docRef = firestore.collection("Usuario");
 //const correo = firebase.auth().onAuthStateChanged(usuario => usuario.email);
 
   
@@ -10,22 +9,22 @@ const refRol = firestore.collection("Rol");
         `<ul>
           <li>
             <a href="index.html">
-              Sesión</a>
+              Inicio</a>
           </li>
         </ul>`;
         this.ul = this.querySelector("ul");
         //const auth = firebase.auth();
-        firebase.auth().onAuthStateChanged(usuario => this.cambiaUsuario(usuario), muestraError);
+        firebase.auth().onAuthStateChanged(usuario => cambiaUsuario(usuario), muestraError);
         }
       }
 
       async function cambiaUsuario(usu) {
         if (usu && usu.email) {
           let html = "";
-          const roles = await cargaRoles(usu.email);
+          const rol = await cargaRoles(usu.email);
           /* Enlaces para solo
            * para clientes. */
-          if (roles.has("Cliente")) {
+          if (rol.has("Cliente")) {
             html += /* html */
               `<li>
                 <a href="gratuitos.html">Gratuitos</a>
@@ -34,7 +33,7 @@ const refRol = firestore.collection("Rol");
           /* Enlaces para solo
            * administradores.
            */
-          if (roles.has("Administrador")) {
+          if (rol.has("Administrador")) {
             html += /* html */
               `<li>
                 <a href="miembros.html">Miembros</a>
@@ -45,7 +44,7 @@ const refRol = firestore.collection("Rol");
       }
 
   async function cargaRoles(mail){
-    const roles = await refUsr.doc(mail).get();
+    const roles = await docRef.doc(mail).get();
                 if (roles.exists) {
                   const datos = roles.data();
                   return new Set(
@@ -56,7 +55,7 @@ const refRol = firestore.collection("Rol");
                 }
     }
 
-    function muestraError(e) {
+   function muestraError(e) {
       console.error(e);
       alert(e.message);
     }
