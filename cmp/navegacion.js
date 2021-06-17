@@ -19,7 +19,6 @@ const docRef = firestore.collection("Usuario");
         this.ul = this.querySelector("ul");
         //const auth = firebase.auth();
         firebase.auth().onAuthStateChanged(usuario => cambiaUsuario(usuario), muestraError);
-        console.log(usuario);
         }
 
       async cambiaUsuario(usu){
@@ -44,22 +43,23 @@ const docRef = firestore.collection("Usuario");
                 <a href="miembros.html">Miembros</a>
               <li>`;
           }
-          ul.innerHTML += html;
+          this.ul.innerHTML += html;
         }
+
+        async function cargaRoles(email){
+          const roles = await docRef.doc(email).get();
+                      if (roles.exists) {
+                        const datos = roles.data();
+                        return new Set(
+                          datos.rolIds || []);
+                      } else {
+                        return new Set();
+                      }
+          }
       }
 
 //console.log(docRef.doc("Usuarios"));
 
-  async cargaRoles(email){
-    const roles = await docRef.doc(email).get();
-                if (roles.exists) {
-                  const datos = roles.data();
-                  return new Set(
-                    datos.rolIds || []);
-                } else {
-                  return new Set();
-                }
-    }
   }
   
   customElements.define(
