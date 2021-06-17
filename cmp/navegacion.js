@@ -15,7 +15,7 @@ const refRol = firestore.collection("Rol");
         </ul>`;
         this.ul = this.querySelector("ul");
         //const auth = firebase.auth();
-        getAuth().onAuthStateChanged(usuario => this.cambiaUsuario(usuario), muestraError);
+        firebase.auth().onAuthStateChanged(usuario => this.cambiaUsuario(usuario), muestraError);
         }
       }
 
