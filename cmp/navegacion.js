@@ -27,7 +27,7 @@ const docRef = firestore.collection("Usuario");
           let html = "";
           const rol = await cargaRoles(usu.email);
           /* Enlaces para solo
-           * para clientes. */
+           * usuarios gratuitos. */
           if (rol.has("Ugratuito")) {
             html += /* html */
               `<li>
@@ -35,14 +35,21 @@ const docRef = firestore.collection("Usuario");
               </li>`;
           }
           /* Enlaces para solo
-           * administradores.
+           * usuarios miembros.
            */
-          if (rol.has("Administrador")) {
+          if (rol.has("Umiembro")) {
             html += /* html */
               `<li>
                 <a href="miembros.html">Miembros</a>
               <li>`;
           }
+          if (rol.has("Administrador")) {
+            html += /* html */
+              `<li>
+                <a href="gestion.html">Gestion</a>
+              <li>`;
+          }
+          
           this.ul.innerHTML += html;
         
 
