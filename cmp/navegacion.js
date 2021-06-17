@@ -1,3 +1,7 @@
+import {
+  muestraError
+} from "../lib/util.js";
+
 const firestore = firebase.firestore();
 const docRef = firestore.collection("Usuario");
 //const correo = firebase.auth().onAuthStateChanged(usuario => usuario.email);
@@ -14,14 +18,14 @@ const docRef = firestore.collection("Usuario");
         </ul>`;
         this.ul = this.querySelector("ul");
         //const auth = firebase.auth();
-        firebase.auth().onAuthStateChanged(usuario => this.cambiaUsuario(usuario), muestraError);
+        firebase.auth().onAuthStateChanged(usuario => cambiaUsuario(usuario), muestraError);
         }
       }
 
       
       async function cambiaUsuario(usu){
         if (usu && usu.email) {
-          //let html = "";
+          let html = "";
           const rol = await cargaRoles(usu.email);
           /* Enlaces para solo
            * para clientes. */
@@ -43,8 +47,8 @@ const docRef = firestore.collection("Usuario");
           this.ul.innerHTML += html;
         }
       }
-      
-console.log(docRef);
+
+console.log(docRef.doc("Usuarios"));
 
   async function cargaRoles(mail){
     const roles = await docRef.doc(mail).get();
@@ -56,11 +60,6 @@ console.log(docRef);
                 } else {
                   return new Set();
                 }
-    }
-
-   function muestraError(e) {
-      console.error(e);
-      alert(e.message);
     }
   
   customElements.define(
