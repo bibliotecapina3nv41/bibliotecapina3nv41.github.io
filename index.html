@@ -16,22 +16,23 @@
     <link rel="stylesheet" href="css/estilos.css">
   </head>
   <body> 
-      <h1>Hola Mundo</h1>
-      <!-- Este es un párrafo-->
-      <p>Hola mundo esto es una prueba.</p>
-      <a href="miembros.html">miembros</a>
-      <a href="gratuitos.html">Gratuitos</a>
-      <!-- Otro párrafo. -->
+      <h1>Biblioteca</h1>
+      <c-navegacion></c-navegacion>
+      <p>¡Bienvenido, lector!</p>
       <p>
-        Este es mi primer ejemplo jajaja un gallo con tenis.
+        Accede a la mejor colecion de libros gratuitos.
       </p>
       <fieldset>
         <legend>Email</legend>
-        <output id="email"><progress max="100">Cargando…</progress></output>
+        <output id="email"><progress max="100">Loading…</progress></output>
+      </fieldset>
+      <fieldset>
+        <legend>Nombre</legend>
+        <output id="nombre"><progress max="100">Loading…</progress></output>
       </fieldset>
       <button type="button" onclick="terminaSesion();">Terminar Sesión</button>
       <c-footer></c-footer>
-      <c-navegacion></c-navegacion>
+      
     <script src="js/CtrlSesion.js"></script>
   </body>
 </html>
