@@ -61,7 +61,7 @@ const docRef = firestore.collection("Usuario");
                           return new Set(datos.rolIds || []);
                           } else {
                             return new Set();
-                           }
+                           } 
         }
 
         

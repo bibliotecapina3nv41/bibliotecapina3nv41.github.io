@@ -1,26 +1,52 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport"
       content="width=device-width,
        initial-scale=1.0">
-    <title>Administracion</title>
+    <title>Hola Mundo</title>
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-storage.js"></script>
     <script src="js/Initi.js"></script>
     <script type="module" src="cmp/navegacion.js"></script>
     <script type="module" src="cmp/CustomFooter.js"></script>
+    <script src="js/CtrlSesion.js"></script>
     <link rel="stylesheet" href="css/estilos.css">
-  </head>
-  <body>
-    <h1>Administración</h1>
+</head>
+<body>
+  <form name="forma">
     <c-navegacion></c-navegacion>
+    <header>
+      <h1>Libro nuevo</h1>
+      <div>
+        <a href="usuarios.html">
+          Cancelar</a>
+        <button type="submit">
+          Guardar
+        </button>
+      </div>
+    </header>
     <p>
-      Gestiona los libros subidos a la plataforma.
+      <label>
+        Nombre del Libro
+        <input name="nomLibr"
+          type="string" required>
+      </label>
+    </p>
+    <p>
+      <label>
+        Libro
+        <input name="libroCarga"
+          type="file" required
+          accept=".pdf">
+      </label>
     </p>
     <c-footer></c-footer>
-  </body>
+  </form>
+  <script type="module"
+    src="js/CtrlUsuarioNuevo.js">
+    </script>
+</body>
 </html>
