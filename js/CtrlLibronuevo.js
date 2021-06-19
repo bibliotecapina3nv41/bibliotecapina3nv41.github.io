@@ -20,7 +20,6 @@
   
 
  async function guarda(){
-    Event.preventDefault();
     try{
         const formData = new FormData(forma);
         const nombre = getString(formData, "nomLibr").trim();
@@ -31,9 +30,11 @@
             nombre,
             aut
         };
-        await refLib.doc(nombre).set(data);
         const libroC = formData.get("libroCarga");
-        await subeStorage(nombre, libroC);
+        subeStorage(nombre, libroC);
+        await refLib.doc(nombre).set(data);
+        
+        
         muestraMiembros();
     } catch{
         muestraError(e);
