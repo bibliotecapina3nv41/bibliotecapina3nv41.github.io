@@ -35,7 +35,10 @@
         };
         await refLib.doc(nombre).set(data);
         const Sarch = formData.get("libroCarg");
-        await storage.ref(nombre).put(Sarch);
+        var metadata = {
+          contentType: 'application/pdf',
+        };
+        await storage.ref(nombre).put(Sarch, metadata);
         muestraMiembros();
   /*  } catch{
         muestraError(e);
