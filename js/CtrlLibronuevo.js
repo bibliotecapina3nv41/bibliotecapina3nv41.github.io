@@ -9,12 +9,12 @@
   const storage = firebase.storage();
   const forma = document["forma"];
   
-  firebase.auth().onAuthStateChanged(valida, muestraError);
+  //firebase.auth().onAuthStateChanged(valida, muestraError);
   
 
   
-async function valida(usuario){
-      if(usuario && usuario.email){
+//async function valida(usuario){
+    //  if(usuario && usuario.email){
          forma.addEventListener("submit", guarda); //
       
     
@@ -41,10 +41,10 @@ async function valida(usuario){
         muestraError(e);
    }*/
 }
-}else{
+/*}else{
   muestraError(e);
-}
-}
+}*/
+//}
 /*
 async function sube(){
     try{
