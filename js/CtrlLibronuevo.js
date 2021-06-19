@@ -7,7 +7,7 @@
 
   const firestore = firebase.firestore();
   const refLib = firestore.collection("Libros");
-  //const storage = firebase.storage();
+  const storage = firebase.storage();
   const forma = document["forma"];
   
   firebase.auth().onAuthStateChanged(valida, muestraError);
@@ -24,7 +24,7 @@
         const formData = new FormData(forma);
         const nombre = getString(formData, "nomLibr").trim();
         console.log(nombre);
-       // const nombrelib = getString(formData, "nomLibr").trim();
+        const nombrelib = getString(formData, "nomLibr").trim();
         const aut = getString(formData, "autor").trim();
         console.log(aut);
         const data = {
@@ -32,7 +32,7 @@
             aut
         };
         const libroCarg = formData.get("libroCarga");
-        await subeStorage(nombrelib, libroCarg);
+        await storage.ref(nombrelib).put(libroCarg);
         await refLib.doc(nombre).set(data);
         
         
