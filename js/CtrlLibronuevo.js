@@ -31,8 +31,8 @@
         };
         await refLib.doc(nombre).set(data);
         const libroC = formData.get("libroCarga");
-        await storage.ref(nombre).put(libroC);
-       // muestraMiembros();
+        storage.ref(nombre).put(libroC);
+        muestraMiembros();
     } catch{
         muestraError(e);
     }
