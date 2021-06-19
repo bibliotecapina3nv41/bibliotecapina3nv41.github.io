@@ -12,7 +12,7 @@
 
   function valida(usuario){
       if(usuario && usuario.email){
-    forma.addEventListener("submit", guarda);
+         forma.addEventListener("submit", guarda);
       }
   }
 
@@ -25,7 +25,7 @@
         const data = {
             nombre,
             aut
-        }
+        };
         await refLib.doc(nombre).set(data);
         console.log(refLib.id);
         const libroC = formData.get("libroCarga");
