@@ -3,9 +3,9 @@
     muestraError
   } from "../lib/util.js";
 
-  const firestore1 = firebase.firestore();
-  const refLib = firestore1.collection("Libros");
-  const sto = firebase.storage();
+  const firestore = firebase.firestore();
+  const refLib = firestore.collection("Libros");
+  const storage = firebase.storage();
   const forma = document["forma"];
   
   firebase.auth().onAuthStateChanged(valida, muestraError);
@@ -39,16 +39,17 @@
 
     async function subeStorage(nombre, archivo) {
         if (archivo instanceof File && archivo.size > 0) {
-          await sto.ref(nombre).put(archivo);
+          await storage.ref(nombre).put(archivo);
         }
       }
 
-      function muestraMiembros(){
-        location.href = "miembros.html";
-      }
+      
 
 }
 
+function muestraMiembros(){
+    location.href = "miembros.html";
+  }
 
 
 
