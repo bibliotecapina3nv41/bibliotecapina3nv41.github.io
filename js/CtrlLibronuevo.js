@@ -17,11 +17,14 @@
   }
 
 
- async function guarda(){
+ async function guarda(evt){
+    evt.preventDefault();
     try{
         const formData = new FormData(forma);
         const nombre = getString(formData, nomLibr).trim();
+        console.log(nombre);
         const aut = getString(formData, autor).trim();
+        console.log(autor);
         const data = {
             nombre,
             aut
