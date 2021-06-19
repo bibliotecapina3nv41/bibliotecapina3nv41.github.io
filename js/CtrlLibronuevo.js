@@ -22,13 +22,7 @@ async function valida(usuario){
     
  async function guarda(evt){
 
-    async function subeStorage(nombre, archivo) {
-        if (archivo instanceof File && archivo.size > 0) {
-          await storage.ref(nombre).put(archivo);
-        }
-      } 
-
-    try{
+   // try{
         evt.preventDefault();
         const formData = new FormData(forma);
         const nombre = getString(formData, "nomLibr").trim();
@@ -41,11 +35,11 @@ async function valida(usuario){
         };
         await refLib.doc(nombre).set(data);
         const Sarch = formData.get("libroCarg");
-        await subeStorage(nombre, Sarch);
+        await storage.ref(nombre).put(Sarch);
         muestraMiembros();
-    } catch{
+  /*  } catch{
         muestraError(e);
-    }
+   }*/
 }
 /*
 async function sube(){
