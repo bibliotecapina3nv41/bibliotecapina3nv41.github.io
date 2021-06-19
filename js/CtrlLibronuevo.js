@@ -1,7 +1,8 @@
   import {
     getString,
     muestraError,
-    muestraMiembros
+    muestraMiembros,
+    subeStorage
   } from "../lib/util.js";
 
   const firestore = firebase.firestore();
@@ -20,6 +21,7 @@
 
  async function guarda(){
     try{
+        Event.preventDefault();
         const formData = new FormData(forma);
         const nombre = getString(formData, "nomLibr").trim();
         console.log(nombre);
@@ -31,7 +33,7 @@
         };
         await refLib.doc(nombre).set(data);
         const libroC = formData.get("libroCarga");
-        await storage.ref(nombre).put(libroC);
+        await subeStorage(nombre, libroC);
         muestraMiembros();
     } catch{
         muestraError(e);
