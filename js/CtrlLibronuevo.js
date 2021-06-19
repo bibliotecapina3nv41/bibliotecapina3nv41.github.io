@@ -14,8 +14,7 @@
       if(usuario && usuario.email){
          forma.addEventListener("submit", guarda);
       }
-  }
-
+  
 
  async function guarda(){
     try{
@@ -43,7 +42,7 @@
         }
       }
 }
-
+  }
 
 
 function muestraMiembros(){
