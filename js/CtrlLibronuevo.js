@@ -29,7 +29,7 @@
         var metadata = {
           contentType: 'application/pdf',
         };
-        var task = await storage.ref(nombre).put(Sarch, metadata);
+        var task = storage.ref(nombre).put(Sarch, metadata);
         task.on('state_changed',
           function progress(snapshot){
             var percentage = (snapshot.bytesTransferred /
