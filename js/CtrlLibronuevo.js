@@ -10,12 +10,12 @@
   
   firebase.auth().onAuthStateChanged(valida, muestraError);
 
-  async function valida(){
+  function valida(){
     forma.addEventListener("submit", guarda);
   }
 
   /** @param {Event} evt */
- async function guarda(Event){
+ async function guarda(){
     try{
         const formData = new FormData(forma);
         const nombre = getString(formData, nomLibr).trim();
