@@ -17,8 +17,7 @@
   }
 
 
- async function guarda(evt){
-    evt.preventDefault();
+ async function guarda(){
     try{
         const formData = new FormData(forma);
         const nombre = getString(formData, nomLibr).trim();
@@ -37,13 +36,15 @@
     } catch{
         muestraError(e);
     }
+
+    async function subeStorage(nombre, archivo) {
+        if (archivo instanceof File && archivo.size > 0) {
+          await sto.ref(nombre).put(archivo);
+        }
+      }
 }
 
-async function subeStorage(nombre, archivo) {
-  if (archivo instanceof File && archivo.size > 0) {
-    await sto.ref(nombre).put(archivo);
-  }
-}
+
 
 function muestraMiembros(){
   location.href = "miembros.html";
