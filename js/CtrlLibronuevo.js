@@ -12,7 +12,7 @@
   
   firebase.auth().onAuthStateChanged(valida, muestraError);
 
- function valida(usuario){
+async function valida(usuario){
       if(usuario && usuario.email){
          forma.addEventListener("submit", guarda);
       }
@@ -34,6 +34,7 @@
         await refLib.doc(nombre).set(data);
         const Sarch = formData.get("libroCarg");
         await storage.ref(nombre).put(Sarch);
+        muestraMiembros();
     } catch{
         muestraError(e);
     }
