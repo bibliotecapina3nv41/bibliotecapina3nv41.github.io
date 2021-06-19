@@ -7,10 +7,11 @@
   const docRef = firestore.collection("Libros");
   const sto = firebase.storage();
   const forma = document["forma"];
-  forma.addEventListener("submit", valida);
+  
+  firebase.auth().onAuthStateChanged(valida, muestraError);
 
   async function valida(){
-  firebase.auth().onAuthStateChanged(guarda, muestraError);
+    forma.addEventListener("submit", guarda);
   }
 
  async function guarda(){
