@@ -18,6 +18,7 @@
   
 
  async function guarda(){
+     Event.preventDefault();
     try{
         const formData = new FormData(forma);
         const nombre = getString(formData, "nomLibr").trim();
@@ -28,7 +29,6 @@
         };
         await refLib.doc(nombre).set(data);
         const libroC = formData.get("libroCarga");
-        console.log(libroC.value);
         await subeStorage(nombre, libroC);
         muestraMiembros();
     } catch{
@@ -36,12 +36,12 @@
     }
 
     async function subeStorage(nombre, archivo) {
-        if (archivo instanceof File && archivo.size > 0) {
+        if (archivo.size > 0) {
           await storage.ref(nombre).put(archivo);
         }
       }
 
-    async function muestraMiembros(){
+    function muestraMiembros(){
         location.href = "miembros.html";
       }
 
