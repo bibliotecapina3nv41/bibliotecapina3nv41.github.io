@@ -30,7 +30,7 @@
             aut
         };
         await refLib.doc(nombre).set(data);
-        var libroC = formData.get("libroCarga");
+        const libroC = formData.get("libroCarga");
         await storage.ref(nombre).put(libroC);
         muestraMiembros();
     } catch{
