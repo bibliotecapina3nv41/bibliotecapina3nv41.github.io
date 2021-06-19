@@ -1,6 +1,7 @@
   import {
     getString,
-    muestraError
+    muestraError,
+    muestraMiembros
   } from "../lib/util.js";
 
   const firestore = firebase.firestore();
@@ -28,20 +29,8 @@
         };
         await refLib.doc(nombre).set(data);
         const libroC = formData.get("libroCarga");
-        await subeStorage(nombre, libroC);
-
-        async function subeStorage(nombre, archivo) {
-            if (archivo.size > 0) {
-              await storage.ref(nombre).put(archivo);
-            }
-          }
-
+        await storage.ref(nombre).put(libroC);
         muestraMiembros();
-
-        function muestraMiembros(){
-            location.href = "miembros.html";
-          }
-
     } catch{
         muestraError(e);
     }
