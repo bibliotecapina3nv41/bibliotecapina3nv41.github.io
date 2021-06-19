@@ -3,6 +3,7 @@
     muestraError
   } from "../lib/util.js";
 
+  const firestore = firebase.firestore();
   const docRef = firestore.collection("Libros");
   const sto = firebase.storage();
   const forma = document["forma"];
