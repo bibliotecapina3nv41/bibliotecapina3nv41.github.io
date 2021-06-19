@@ -41,11 +41,14 @@
           await sto.ref(nombre).put(archivo);
         }
       }
+
+      function muestraMiembros(){
+        location.href = "miembros.html";
+      }
+
 }
   }
 
 
-function muestraMiembros(){
-  location.href = "miembros.html";
-}
+
 
