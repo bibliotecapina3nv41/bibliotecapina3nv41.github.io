@@ -25,14 +25,14 @@
         console.log(nombre);
         const aut = getString(formData, "autor").trim();
         console.log(aut);
-        const libroC = formData.get("libroCarga");
         const data = {
             nombre,
             aut
         };
         await refLib.doc(nombre).set(data);
+        const libroC = formData.get("libroCarga");
         await storage.ref(nombre).put(libroC);
-        muestraMiembros();
+       // muestraMiembros();
     } catch{
         muestraError(e);
     }
