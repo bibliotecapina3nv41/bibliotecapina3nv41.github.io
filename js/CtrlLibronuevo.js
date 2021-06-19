@@ -23,8 +23,6 @@
     try{
         evt.preventDefault();
         const formData = new FormData(forma);
-        const Sarch = formData.get("libroCarg");
-        await storage.ref(nombre).put(Sarch);
         const nombre = getString(formData, "nomLibr").trim();
         console.log(nombre);
         const aut = getString(formData, "autor").trim();
@@ -34,7 +32,8 @@
             aut
         };
         await refLib.doc(nombre).set(data);
-        
+        const Sarch = formData.get("libroCarg");
+        await storage.ref(nombre).put(Sarch);
         //muestraMiembros(); 
     } catch{
         muestraError(e);
