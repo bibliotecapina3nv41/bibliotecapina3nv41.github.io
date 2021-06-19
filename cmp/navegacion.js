@@ -4,7 +4,6 @@ import {
 
 const firestore = firebase.firestore();
 const docRef = firestore.collection("Usuario");
-//const correo = firebase.auth().onAuthStateChanged(usuario => usuario.email);
 
   
   class Navegacion extends HTMLElement {
