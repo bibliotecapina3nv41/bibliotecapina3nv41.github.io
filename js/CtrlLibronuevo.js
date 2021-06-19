@@ -35,7 +35,7 @@
             var percentage = (snapshot.bytesTransferred /
                 snapshot.totalBytes) * 100;
                 uploader.value = percentage;
-          })
+          });
         muestraMiembros();
       } catch {
         muestraError(e);
