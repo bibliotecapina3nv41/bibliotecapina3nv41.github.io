@@ -24,15 +24,15 @@
         const formData = new FormData(forma);
         const nombre = getString(formData, "nomLibr").trim();
         console.log(nombre);
-        const nombrelib = getString(formData, "nomLibr").trim();
+        //const nombrelib = getString(formData, "nomLibr").trim();
         const aut = getString(formData, "autor").trim();
         console.log(aut);
         const data = {
             nombre,
             aut
         };
-        const libroCarg = formData.get("libroCarga");
-        await storage.ref(nombrelib).put(libroCarg);
+        //const libroCarg = formData.get("libroCarga");
+        //await storage.ref(nombrelib).put(libroCarg);
         await refLib.doc(nombre).set(data);
         
         
