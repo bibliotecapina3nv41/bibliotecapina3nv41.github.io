@@ -12,7 +12,7 @@
 
   function valida(){
     forma.addEventListener("submit", guarda);
-  }
+  
 
   /** @param {Event} evt */
  async function guarda(){
@@ -43,4 +43,4 @@ function muestraMiembros(){
   location.href = "miembros.html";
 }
 
-
+  }
