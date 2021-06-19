@@ -21,16 +21,14 @@
     try{
         const formData = new FormData(forma);
         const nombre = getString(formData, "nomLibr").trim();
-        console.log(nombre);
         const aut = getString(formData, "autor").trim();
-        console.log(aut);
         const data = {
             nombre,
             aut
         };
         await refLib.doc(nombre).set(data);
-        console.log(refLib.id);
         const libroC = formData.get("libroCarga");
+        console.log(libroC.value);
         await subeStorage(nombre, libroC);
         muestraMiembros();
     } catch{
@@ -43,13 +41,13 @@
         }
       }
 
-      
+    async function muestraMiembros(){
+        location.href = "miembros.html";
+      }
 
 }
 
-function muestraMiembros(){
-    location.href = "miembros.html";
-  }
+
 
 
 
