@@ -14,7 +14,8 @@
     forma.addEventListener("submit", guarda);
   }
 
- async function guarda(){
+  /** @param {Event} evt */
+ async function guarda(Event){
     try{
         const formData = new FormData(forma);
         const nombre = getString(formData, nomLibr).trim();
@@ -25,7 +26,7 @@
         }
         await docRef.doc(nombre).set(data);
         const libroC = formData.get("libroCarga");
-        await subeStorage(id, libroC);
+        await subeStorage(nombre, libroC);
         muestraMiembros();
     } catch{
         muestraError(e);
@@ -38,7 +39,7 @@ async function subeStorage(nombre, archivo) {
   }
 }
 
-function muestraMiembros() {
+function muestraMiembros(){
   location.href = "miembros.html";
 }
 
