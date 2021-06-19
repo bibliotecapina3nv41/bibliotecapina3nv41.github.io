@@ -18,7 +18,6 @@
   
 
  async function guarda(){
-     Event.preventDefault();
     try{
         const formData = new FormData(forma);
         const nombre = getString(formData, "nomLibr").trim();
@@ -42,7 +41,7 @@
         function muestraMiembros(){
             location.href = "miembros.html";
           }
-          
+
     } catch{
         muestraError(e);
     }
