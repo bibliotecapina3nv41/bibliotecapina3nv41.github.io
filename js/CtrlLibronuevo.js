@@ -8,7 +8,7 @@
   const forma = document["forma"];
   forma.addEventListener("submit", guarda);
 
-async function guarda(){
+ function guarda(){
     try{
         const formData = new FormData(forma);
         const id = getString(formData, nomLibr).trim();
