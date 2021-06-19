@@ -8,6 +8,7 @@
   const refLib = firestore.collection("Libros");
   const storage = firebase.storage();
   const forma = document["forma"];
+  var uploader = document.getElementById('uploader');
   
  forma.addEventListener("submit", guarda);
     
@@ -33,7 +34,7 @@
           function progress(snapshot){
             var percentage = (snapshot.bytesTransferred /
                 snapshot.totalBytes) * 100;
-                forma.uploader.value = percentage;
+                uploader.value = percentage;
           })
         muestraMiembros();
       } catch {
