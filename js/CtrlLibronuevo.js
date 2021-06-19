@@ -33,8 +33,8 @@
         };
         await refLib.doc(nombre).set(data);
         const Sarch = formData.get("libroCarg");
-        await storage.ref(nombre).put(Sarch);
-        //muestraMiembros(); 
+        const final = await storage.ref(nombre).put(Sarch);
+        console.log(final);
     } catch{
         muestraError(e);
     }
