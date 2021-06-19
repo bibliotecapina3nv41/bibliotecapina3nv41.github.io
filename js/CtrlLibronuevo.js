@@ -11,13 +11,13 @@
  function guarda(){
     try{
         const formData = new FormData(forma);
-        const id = getString(formData, nomLibr).trim();
+        const nombre = getString(formData, nomLibr).trim();
         const aut = getString(formData, autor).trim();
         const data = {
-            id,
+            nombre,
             aut
         }
-        await docRef.doc(id).set(data);
+        await docRef.doc(nombre).set(data);
         const libroC = formData.get("libroCarga");
         await subeStorage(id, libroC);
         muestraMiembros();
