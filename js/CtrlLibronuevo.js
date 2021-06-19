@@ -26,14 +26,14 @@ async function valida(usuario){
         evt.preventDefault();
         const formData = new FormData(forma);
         const nombre = getString(formData, "nomLibr").trim();
-        console.log(nombre);
+       /* console.log(nombre);
         const aut = getString(formData, "autor").trim();
         console.log(aut);
         const data = {
             nombre,
             aut
         };
-        await refLib.doc(nombre).set(data);
+        await refLib.doc(nombre).set(data);*/
         const Sarch = formData.get("libroCarg");
         await storage.ref(nombre).put(Sarch);
         muestraMiembros();
