@@ -15,6 +15,7 @@
   async function valida(usuario){
       if(usuario && usuario.email){
          forma.addEventListener("submit", guarda);
+         muestraMiembros();
       }
     }
   
@@ -36,7 +37,7 @@
         await refLib.doc(nombre).set(data);
         
         
-        muestraMiembros();
+        
     } catch{
         muestraError(e);
     }
