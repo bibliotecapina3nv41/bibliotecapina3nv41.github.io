@@ -33,7 +33,7 @@
           function progress(snapshot){
             var percentage = (snapshot.bytesTransferred /
                 snapshot.totalBytes) * 100;
-                uploader.value = percentage;
+                forma.uploader.value = percentage;
           })
         muestraMiembros();
       } catch {
