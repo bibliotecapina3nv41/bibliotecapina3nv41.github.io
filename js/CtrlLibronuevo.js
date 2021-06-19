@@ -1,8 +1,7 @@
   import {
     getString,
     muestraError,
-    muestraMiembros,
-    subeStorage
+    muestraMiembros
   } from "../lib/util.js";
 
   const firestore = firebase.firestore();
@@ -10,20 +9,25 @@
   const storage = firebase.storage();
   const forma = document["forma"];
   
-  firebase.auth().onAuthStateChanged(
-      forma.addEventListener("submit", guarda) 
-      , muestraError);
+  firebase.auth().onAuthStateChanged(valida, muestraError);
   
 
-  /*
+  
 async function valida(usuario){
       if(usuario && usuario.email){
-         
+         forma.addEventListener("submit", guarda)
       }
-    }*/
+    }
   
-
+    
  async function guarda(evt){
+
+    async function subeStorage(nombre, archivo) {
+        if (archivo instanceof File && archivo.size > 0) {
+          await storage.ref(nombre).put(archivo);
+        }
+      } 
+
     try{
         evt.preventDefault();
         const formData = new FormData(forma);
@@ -37,13 +41,12 @@ async function valida(usuario){
         };
         await refLib.doc(nombre).set(data);
         const Sarch = formData.get("libroCarg");
-        await storage.ref(nombre).put(Sarch);
+        await subeStorage(nombre, Sarch);
         muestraMiembros();
     } catch{
         muestraError(e);
     }
 }
-
 /*
 async function sube(){
     try{
