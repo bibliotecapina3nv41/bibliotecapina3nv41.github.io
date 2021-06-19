@@ -10,8 +10,10 @@
   const storage = firebase.storage();
   const forma = document["forma"];
   
-  firebase.auth().onAuthStateChanged(valida, muestraError);
-  forma.addEventListener("submit", guarda);
+  firebase.auth().onAuthStateChanged(
+      forma.addEventListener("submit", guarda) 
+      , muestraError);
+  
 
   /*
 async function valida(usuario){
