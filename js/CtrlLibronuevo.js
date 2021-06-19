@@ -7,7 +7,7 @@
 
   const firestore = firebase.firestore();
   const refLib = firestore.collection("Libros");
-  const storage = firebase.storage();
+  //const storage = firebase.storage();
   const forma = document["forma"];
   
   firebase.auth().onAuthStateChanged(valida, muestraError);
@@ -15,7 +15,6 @@
   async function valida(usuario){
       if(usuario && usuario.email){
          forma.addEventListener("submit", guarda);
-         muestraMiembros();
       }
     }
   
@@ -32,8 +31,8 @@
             nombre,
             aut
         };
-        //const libroCarg = formData.get("libroCarga");
-        //await subeStorage(nombrelib, libroCarg);
+        const libroCarg = formData.get("libroCarga");
+        await subeStorage(nombrelib, libroCarg);
         await refLib.doc(nombre).set(data);
         
         
