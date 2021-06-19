@@ -14,12 +14,23 @@
     <script src="js/CtrlGratuitos.js"></script>
     <script type="module" src="cmp/navegacion.js"></script>
     <script type="module" src="cmp/CustomFooter.js"></script>
+    <script type="module" src="cmp/CustomProgr.js"></script>
     <link rel="stylesheet" href="css/estilos.css">
   </head>
   <body>
     <h1>Biblioteca</h1>
-    <c-navegacion></c-navegacion>
+    <c-navegacion>
+      <c-progreso>
+      </c-progreso>
+    </c-navegacion>
     <p>Accede a la mejor coleccion de libros de manera gratuita</p>
+    <ul id="lista" class="lista">
+      <li>
+        <c-progreso></c-progreso>
+      </li>
+    </ul>
     <c-footer></c-footer>
+    <script src="js/CtrlSesion.js"></script>
+    <script type="module" src="js/CtrlGratuitos.js"></script>
   </body>
 </html>

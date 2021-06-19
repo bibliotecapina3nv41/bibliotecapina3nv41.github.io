@@ -42,12 +42,6 @@ const docRef = firestore.collection("Usuario");
                 <a href="miembros.html">Miembros</a>
               <li>`;
           }
-          if (rol.has("Administrador")) {
-            html += /* html */
-              `<li>
-                <a href="gestion.html">Gestion</a>
-              <li>`;
-          }
           
           this.ul.innerHTML += html;
         
