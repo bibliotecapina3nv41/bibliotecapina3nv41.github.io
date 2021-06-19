@@ -15,7 +15,7 @@
   
 async function valida(usuario){
       if(usuario && usuario.email){
-         forma.addEventListener("submit", guarda)
+         forma.addEventListener("submit", guarda); //
       }
     }
   
