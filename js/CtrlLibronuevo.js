@@ -30,20 +30,24 @@
         await refLib.doc(nombre).set(data);
         const libroC = formData.get("libroCarga");
         await subeStorage(nombre, libroC);
+
+        async function subeStorage(nombre, archivo) {
+            if (archivo.size > 0) {
+              await storage.ref(nombre).put(archivo);
+            }
+          }
+
         muestraMiembros();
+
+        function muestraMiembros(){
+            location.href = "miembros.html";
+          }
+          
     } catch{
         muestraError(e);
     }
 
-    async function subeStorage(nombre, archivo) {
-        if (archivo.size > 0) {
-          await storage.ref(nombre).put(archivo);
-        }
-      }
 
-    function muestraMiembros(){
-        location.href = "miembros.html";
-      }
 
 }
 
