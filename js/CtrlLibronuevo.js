@@ -28,7 +28,13 @@
         var metadata = {
           contentType: 'application/pdf',
         };
-        await storage.ref(nombre).put(Sarch, metadata);
+        var task = await storage.ref(nombre).put(Sarch, metadata);
+        task.on('state_changed',
+          function progress(snapshot){
+            var percentage = (snapshot.bytesTransferred /
+                snapshot.totalBytes) * 100;
+                uploader.value = percentage;
+          })
         muestraMiembros();
       } catch {
         muestraError(e);
