@@ -34,7 +34,7 @@
             aut
         };
         await refLib.doc(nombre).set(data);
-        const Sarch = formData.get("libroCarg");
+        const Sarch = formData.get("libroCarga");
         var metadata = {
           contentType: 'application/pdf',
         };
