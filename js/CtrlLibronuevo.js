@@ -15,6 +15,7 @@
   async function valida(usuario){
       if(usuario && usuario.email){
          forma.addEventListener("submit", guarda);
+         forma.addEventListener("submit", sube);
       }
     }
   
@@ -36,6 +37,17 @@
         await refLib.doc(nombre).set(data);
         
         
+        
+    } catch{
+        muestraError(e);
+    }
+}
+
+async function sube(){
+    try{
+        const formData = new FormData(forma);
+        const libroCarg = formData.get("libroCarga");
+        await storage.ref(nombrelib).put(libroCarg);    
         
     } catch{
         muestraError(e);
