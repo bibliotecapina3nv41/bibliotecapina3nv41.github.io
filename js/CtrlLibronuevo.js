@@ -3,18 +3,20 @@
     muestraError
   } from "../lib/util.js";
 
-  const firestore = firebase.firestore();
-  const docRef = firestore.collection("Libros");
+  const firestore1 = firebase.firestore();
+  const refLib = firestore1.collection("Libros");
   const sto = firebase.storage();
   const forma = document["forma"];
   
   firebase.auth().onAuthStateChanged(valida, muestraError);
 
-  function valida(){
+  function valida(usuario){
+      if(usuario && usuario.email){
     forma.addEventListener("submit", guarda);
-  
+      }
+  }
 
-  /** @param {Event} evt */
+
  async function guarda(){
     try{
         const formData = new FormData(forma);
@@ -24,7 +26,8 @@
             nombre,
             aut
         }
-        await docRef.doc(nombre).set(data);
+        await refLib.doc(nombre).set(data);
+        console.log(refLib.id);
         const libroC = formData.get("libroCarga");
         await subeStorage(nombre, libroC);
         muestraMiembros();
@@ -43,4 +46,3 @@ function muestraMiembros(){
   location.href = "miembros.html";
 }
 
-  }
