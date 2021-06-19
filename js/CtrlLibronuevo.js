@@ -14,15 +14,16 @@
       if(usuario && usuario.email){
          forma.addEventListener("submit", guarda);
       }
+    }
   
 
  async function guarda(){
     try{
         const formData = new FormData(forma);
-        const nombre = getString(formData, nomLibr).trim();
+        const nombre = getString(formData, "nomLibr").trim();
         console.log(nombre);
-        const aut = getString(formData, autor).trim();
-        console.log(autor);
+        const aut = getString(formData, "autor").trim();
+        console.log(aut);
         const data = {
             nombre,
             aut
@@ -47,7 +48,6 @@
       }
 
 }
-  }
 
 
 
