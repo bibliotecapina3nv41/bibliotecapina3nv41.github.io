@@ -46,6 +46,7 @@
 async function sube(){
     try{
         const formData = new FormData(forma);
+        const nombrelib = getString(formData, "nomLibr").trim();
         const libroCarg = formData.get("libroCarga");
         await storage.ref(nombrelib).put(libroCarg);    
         
