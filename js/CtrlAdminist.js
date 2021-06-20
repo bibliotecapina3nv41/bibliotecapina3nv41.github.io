@@ -12,8 +12,9 @@ const firestore = firebase.firestore();
 
   forma.addEventListener("submit", elimina);
 
-  async function elimina() {
+  async function elimina(evt) {
     try {
+        evt.preventDefault();
         if (confirm("Confirmar la " + "eliminación")) {
             const formData = new FormData(forma);
             const nombre = getString(formData, "nomLibr").trim();
