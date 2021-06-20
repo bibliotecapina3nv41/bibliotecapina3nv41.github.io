@@ -44,9 +44,9 @@ async function protege(usuario) {
     const enlace = cod(await storage.ref(nombre).getDownloadURL());
     return (/* html */
         `<li>
-        <a class="fila" href="${cod(enlace)}">
+        <a class="fila" href="${enlace}">
             <span class="texto">
-            <strong class="primario">${cod(doc.id)}<br>${cod(autor)}</strong>
+            <strong class="primario">${cod(doc.id)}<br>${autor}</strong>
             </span>
         </a>
     </li>`);
