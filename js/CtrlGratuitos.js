@@ -8,8 +8,9 @@ const refLib = firestore.collection("Libros");
 const storage = firebase.storage();
 const lista = document.querySelector("#lista");
 
+getAuth().onAuthStateChanged(consulta, muestraError);
 
-
+async function consulta(){
 refLib.onSnapshot(
     snapshot => {
       snapshot.forEach(doc => {
@@ -37,3 +38,4 @@ refLib.onSnapshot(
       })
     },
     error => console.error(error));
+}
