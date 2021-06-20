@@ -1,6 +1,7 @@
 import {
     getString,
     muestraError,
+    muestraAdmin
   } from "../lib/util.js";
 
 
@@ -21,6 +22,7 @@ const firestore = firebase.firestore();
             estatus.textContent = "Eliminando...";
             await refLib.doc(nombre).delete();
             await storage.ref(nombre).delete();
+            muestraAdmin();
         }
         } catch (e) {
         muestraError(e);
