@@ -48,7 +48,7 @@ const docRef = firestore.collection("Usuario");
           if (rol.has("Administrador")) {
             html += /* html */
               `<li>
-                <a href="administ.html">Miembros</a>
+                <a href="administ.html">Gestion</a>
               <li>`;
           }
           
