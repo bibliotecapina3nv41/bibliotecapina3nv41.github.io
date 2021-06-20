@@ -46,7 +46,9 @@ async function protege(usuario) {
         `<li>
         <a class="fila" href="${enlace}">
             <span class="texto">
-            <strong class="primario">${cod(doc.id)}<br>${autor}</strong>
+            <strong class="primario">
+            Nombre: ${cod(doc.id)}<br>Autor: ${autor}
+            </strong>
             </span>
         </a>
     </li>`);

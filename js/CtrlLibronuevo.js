@@ -15,7 +15,7 @@
  async function guarda(evt){
     try{
         evt.preventDefault();
-        estatus.textContent = "Espere...";
+        estatus.textContent = "Subiendo libro...";
         const formData = new FormData(forma);
         const nombre = getString(formData, "nomLibr").trim();
         console.log(nombre);

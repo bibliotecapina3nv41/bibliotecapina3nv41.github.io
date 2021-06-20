@@ -42,6 +42,15 @@ const docRef = firestore.collection("Usuario");
                 <a href="miembros.html">Miembros</a>
               <li>`;
           }
+          /* Enlaces para
+           * el administrador.
+           */
+          if (rol.has("Administrador")) {
+            html += /* html */
+              `<li>
+                <a href="administ.html">Miembros</a>
+              <li>`;
+          }
           
           this.ul.innerHTML += html;
         
