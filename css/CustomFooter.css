@@ -4,5 +4,7 @@ c-footer {
     font-size: small;
     text-align: center;
     border: 1px solid black;
+    background-color:
+      var(--colorNavegacion);
   }
   

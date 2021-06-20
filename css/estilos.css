@@ -13,12 +13,10 @@ body {
     background: rgb(252, 172, 67);
 }
 
-header {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  background-color:
-    var(--color-header);
+li {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
 }
 
 fieldset {
