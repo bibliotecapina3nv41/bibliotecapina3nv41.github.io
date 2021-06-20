@@ -12,21 +12,21 @@ const lista = document.querySelector("#lista");
 
 refLib.onSnapshot(
     snapshot => {
-      snapshot.forEach(document => {
+      snapshot.forEach(doc => {
           let html = "";
           if(snapshot.size > 0){
-            const datos = document.data();
+            const datos = doc.data();
             const nombre = cod(datos.nombre);
             const autor = cod(datos.aut);
             const enlace = await storage.ref(nombre).getDownloadURL();
             html += /* html */
             `<li>
-                <a class="fila" href="${enlace}">
+                <a class="fila" href="${cod(enlace)}">
                     <span class="texto">
-                    <strong class="primario">${cod(document.id)}<br>${cod(autor)}</strong>
+                    <strong class="primario">${cod(doc.id)}<br>${cod(autor)}</strong>
                     </span>
                 </a>
-            </li>`
+            </li>`;
         } else {
             html += /* html */
                 `<li class="vacio">
