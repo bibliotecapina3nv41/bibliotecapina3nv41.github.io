@@ -10,7 +10,7 @@ const lista = document.querySelector("#lista");
 
 getAuth().onAuthStateChanged(consulta, muestraError);
 
-async function consulta(){
+function consulta(){
 refLib.onSnapshot(
     snapshot => {
       snapshot.forEach(doc => {
