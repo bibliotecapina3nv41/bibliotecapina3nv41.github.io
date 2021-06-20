@@ -3,5 +3,6 @@ c-footer {
     margin: 1rem;
     font-size: small;
     text-align: center;
+    border: 1px solid black;
   }
   
