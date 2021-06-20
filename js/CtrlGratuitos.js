@@ -21,7 +21,7 @@ refLib.onSnapshot(
             `<li>
                 <a class="fila" href="${enlace}">
                     <span class="texto">
-                    <strong class="primario">${cod(doc.id)}<br>${cod(autor)}</strong>
+                    <strong class="primario">${cod(doc.id)}<br>${autor}</strong>
                     </span>
                 </a>
             </li>`;
