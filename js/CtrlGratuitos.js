@@ -19,7 +19,7 @@ refLib.onSnapshot(
             const enlace = storage.ref(nombre).getDownloadURL();
             html += /* html */
             `<li>
-                <a class="fila" href="${enlace}">
+                <a class="fila" href="${cod(enlace)}">
                     <span class="texto">
                     <strong class="primario">${cod(doc.id)}<br>${autor}</strong>
                     </span>
