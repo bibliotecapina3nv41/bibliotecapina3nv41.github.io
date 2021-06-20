@@ -8,13 +8,13 @@ const refLib = firestore.collection("Libros");
 const storage = firebase.storage();
 const lista = document.querySelector("#lista");
 
-getAuth().onAuthStateChanged(consulta, muestraError);
+firebase.auth().onAuthStateChanged(protege, muestraError);
 
-/*async function protege(usuario) {
+async function protege(usuario) {
     if (usuario && usuario.email) {
       consulta();
     }
-  }*/
+  }
 
   function consulta() {
     refLib.onSnapshot(htmlLista, errConsulta);
