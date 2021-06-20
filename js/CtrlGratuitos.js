@@ -16,7 +16,7 @@ refLib.onSnapshot(
             const datos = doc.data();
             const nombre = cod(datos.nombre);
             const autor = cod(datos.aut);
-            const enlace = await storage.ref(nombre).getDownloadURL();
+            const enlace = storage.ref(nombre).getDownloadURL();
             html += /* html */
             `<li>
                 <a class="fila" href="${enlace}">
