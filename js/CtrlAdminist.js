@@ -12,17 +12,18 @@ const firestore = firebase.firestore();
 
   forma.addEventListener("submit", elimina);
 
-  async function elimina() {
+  async function elimina(evt) {
     try {
-      if (confirm("Confirmar la " + "eliminación")) {
-        const formData = new FormData(forma);
-        const nombre = getString(formData, "nomLibr").trim();
-        estatus.textContent = "Eliminando...";
-        await refLib.doc(nombre).delete();
-        await storage.ref(nombre).delete();
-      }
-    } catch (e) {
-      muestraError(e);
-    }
+        evt.preventDefault();
+        if (confirm("Confirmar la " + "eliminación")) {
+            const formData = new FormData(forma);
+            const nombre = getString(formData, "nomLibr").trim();
+            estatus.textContent = "Eliminando...";
+            await refLib.doc(nombre).delete();
+            await storage.ref(nombre).delete();
+        }
+        } catch (e) {
+        muestraError(e);
+        }
   }
 
