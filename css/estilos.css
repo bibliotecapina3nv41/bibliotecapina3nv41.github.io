@@ -48,3 +48,8 @@ div {
   gap: 0.5rem;
 }
 
+p {
+  display: block;
+  font-weight: bold;
+  font-size: 0.7rem;
+}
