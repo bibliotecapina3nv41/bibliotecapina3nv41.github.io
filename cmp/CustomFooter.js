@@ -4,7 +4,9 @@ class Cfooter
     this.innerHTML = /* html */
       `<p>
         &copy; 2021
-        Biblioteca Beta.
+        Jose Arturo Piña - 
+        Programación Web 3NV41 - 
+        UPIICSA.
       </p>`;
   }
 }

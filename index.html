@@ -5,7 +5,7 @@
     <meta name="viewport"
       content="width=device-width,
        initial-scale=1.0">
-    <title>Hola Mundo</title>
+    <title>Biblioteca Pina</title>
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
@@ -16,23 +16,22 @@
     <link rel="stylesheet" href="css/estilos.css">
   </head>
   <body> 
-      <h1>Biblioteca</h1>
-      <c-navegacion></c-navegacion>
-      <p>¡Bienvenido, lector!</p>
-      <p>
-        Accede a la mejor colecion de libros gratuitos.
-      </p>
-      <fieldset>
-        <legend>Email</legend>
-        <output id="email"><progress max="100">Loading…</progress></output>
-      </fieldset>
-      <fieldset>
-        <legend>Nombre</legend>
-        <output id="nombre"><progress max="100">Loading…</progress></output>
-      </fieldset>
-      <button type="button" onclick="terminaSesion();">Cerrar Sesión</button>
-      <c-footer></c-footer>
-      
+    <h1>Biblioteca</h1>
+    <c-navegacion></c-navegacion>
+    <p>¡Bienvenido, lector!</p>
+    <p>
+      Accede a la mejor colecion de libros gratuitos.
+    </p>
+    <fieldset>
+      <legend>Nombre</legend>
+      <output id="nombre"><progress max="100">Loading…</progress></output>
+    </fieldset>
+    <fieldset>
+      <legend>Email</legend>
+      <output id="email"><progress max="100">Loading…</progress></output>
+    </fieldset>
+    <button type="button" onclick="terminaSesion();">Cerrar Sesión</button>
+    <c-footer></c-footer>
     <script src="js/CtrlSesion.js"></script>
   </body>
 </html>

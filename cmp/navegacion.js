@@ -18,7 +18,7 @@ const docRef = firestore.collection("Usuario");
         this.ul = this.querySelector("ul");
         //const auth = firebase.auth();
         firebase.auth().onAuthStateChanged(usuario => this.cambiaUsuario(usuario), muestraError);
-        }
+      }
 
       async cambiaUsuario(usu){
         if (usu && usu.email) {
@@ -69,9 +69,6 @@ const docRef = firestore.collection("Usuario");
         
       }
     }
-
-//console.log(docRef.doc("Usuarios"));
-
   }
   
   customElements.define(
